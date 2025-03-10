@@ -22,9 +22,6 @@ uv init
 
 # 必要なライブラリを追加
 uv add gymnasium pygame ale-py
-
-# 環境を同期（依存関係のインストール）
-uv sync
 ```
 
 ## 使い方
