@@ -1,0 +1,11 @@
+[project]
+name = "packman"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "ale-py>=0.10.2",
+    "gymnasium>=1.1.1",
+    "pygame>=2.6.1",
+]
