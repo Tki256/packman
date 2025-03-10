@@ -13,8 +13,11 @@ def init_game():
     env = gym.make("ALE/MsPacman-v5", render_mode="rgb_array")
     # 初期状態の取得
     observation, _ = env.reset()
-    # 画面サイズの設定
-    screen_height, screen_width = observation.shape[0], observation.shape[1]
+    # 画面サイズの設定（元のサイズを2倍に拡大）
+    original_height, original_width = observation.shape[0], observation.shape[1]
+    scale_factor = 2  # 拡大倍率
+    screen_width = original_width * scale_factor
+    screen_height = original_height * scale_factor
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("MS Pacman")
     
@@ -25,8 +28,12 @@ def update_display(screen, observation):
     """観測結果を画面に表示する関数"""
     # NumPy配列からPygameのSurfaceに変換
     surf = pygame.surfarray.make_surface(observation.swapaxes(0, 1))
+    # 画面サイズを取得
+    screen_width, screen_height = screen.get_size()
+    # 画像を画面サイズに合わせて拡大
+    scaled_surf = pygame.transform.scale(surf, (screen_width, screen_height))
     # 画面に描画
-    screen.blit(surf, (0, 0))
+    screen.blit(scaled_surf, (0, 0))
     pygame.display.flip()
 
 # キー入力をアクションに変換する関数
