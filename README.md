@@ -18,10 +18,10 @@
 
 ```bash
 # uvを使用して環境を作成
-uv init
+git clone https://github.com/Tki256/packman
 
-# 必要なライブラリを追加
-uv add gymnasium pygame ale-py
+# 必要なライブラリをインストール
+uv sync
 ```
 
 ## 使い方
